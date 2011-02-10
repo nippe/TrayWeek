@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrayWeek.GUI", "TrayWeek.GUI\TrayWeek.GUI.csproj", "{F931C720-F86C-4A37-BE8E-814F7038F184}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Artifacts", "Build Artifacts", "{7C261278-B8BE-4236-A7E2-3CE0F08950E5}"
+	ProjectSection(SolutionItems) = preProject
+		psake.psm1 = psake.psm1
+		TrayWeek_Build.ps1 = TrayWeek_Build.ps1
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F931C720-F86C-4A37-BE8E-814F7038F184}.Debug|x86.ActiveCfg = Release|x86
+		{F931C720-F86C-4A37-BE8E-814F7038F184}.Debug|x86.Build.0 = Release|x86
+		{F931C720-F86C-4A37-BE8E-814F7038F184}.Release|x86.ActiveCfg = Release|x86
+		{F931C720-F86C-4A37-BE8E-814F7038F184}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
