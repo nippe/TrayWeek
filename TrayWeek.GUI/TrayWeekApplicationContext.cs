@@ -39,9 +39,22 @@ namespace TrayWeek.GUI
         {
             //Add Exit menu item
             _contextMenu = new ContextMenuStrip();
+
+            ToolStripMenuItem menuItem_Settings = new ToolStripMenuItem("Settings", null, new EventHandler(this.menuItem_Settings_Click));
             ToolStripMenuItem menuItem_Exit = new ToolStripMenuItem("Exit", null, new EventHandler(this.menuItem_Exit_Click));
+           
+            _contextMenu.Items.Add(menuItem_Settings);
             _contextMenu.Items.Add(menuItem_Exit);
             _notifyIcon.ContextMenuStrip = _contextMenu;
+        }
+
+        private void menuItem_Settings_Click(object sender, EventArgs e)
+        {
+            frmSettings settingsDialog = new frmSettings();
+            if(settingsDialog.ShowDialog() == DialogResult.OK)
+            {
+                //
+            }
         }
 
         private void menuItem_Exit_Click(object sender, EventArgs e)

@@ -14,6 +14,19 @@ namespace TrayWeek.GUI
         public frmSettings()
         {
             InitializeComponent();
+            drpWeekStartDay.SelectedIndex = 0;
+            drpFirstWeek.SelectedIndex = 0;
+        }
+
+        private void brnOk_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
