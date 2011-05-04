@@ -9,24 +9,14 @@ namespace TrayWeek.GUI
     public class DateHelper
     {
 
-        public static int GetCurrentWeekNumber(DateTime date, DayOfWeek dayOfWeek)
+        public static int GetCurrentWeekNumber(DateTime date, DayOfWeek dayOfWeek, CalendarWeekRule weekRule)
         {
             System.Globalization.GregorianCalendar calendar = new GregorianCalendar(GregorianCalendarTypes.Localized);
-            return calendar.GetWeekOfYear(date, CalendarWeekRule.FirstFourDayWeek, dayOfWeek);
+            return calendar.GetWeekOfYear(date, weekRule, dayOfWeek);  
         }
+        
 
-
-        public static int GetCurrentWeekNumber(DateTime date)
-        {
-            return GetCurrentWeekNumber(date, DayOfWeek.Monday);
-        }
-
-
-        public static int GetCurrentWeekNumber()
-        {
-            return GetCurrentWeekNumber(DateTime.Now);
-        }
-
+        //TODO: Try to use DayOfWeek.TryParse instead, but need to get tests in place for that.
         public static DayOfWeek GetWeekStartDayEnum(string weekDay)
         {
             switch(weekDay)
@@ -45,6 +35,26 @@ namespace TrayWeek.GUI
                     return DayOfWeek.Sunday;
                 default:
                     return DayOfWeek.Monday;   
+            }
+        }
+
+
+
+        // input
+        //First 4-day week
+        //1 january
+        //First full week
+        public static CalendarWeekRule GetCalendarWeekRule(string firstWeekOfYear)
+        {
+            switch (firstWeekOfYear)
+            {
+
+                case "First full week":
+                    return CalendarWeekRule.FirstFullWeek;
+                case "1 january":
+                    return CalendarWeekRule.FirstDay;   
+                default:
+                    return CalendarWeekRule.FirstFourDayWeek;
             }
         }
     }

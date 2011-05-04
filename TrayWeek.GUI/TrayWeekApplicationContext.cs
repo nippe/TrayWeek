@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Globalization;
 using System.Timers;
 using System.Windows.Forms;
 using Timer = System.Timers.Timer;
@@ -14,6 +15,7 @@ namespace TrayWeek.GUI
         private Timer _timer;
         private ContextMenuStrip _contextMenu;
         private DayOfWeek _weeksStartsWith = DayOfWeek.Monday;
+        private CalendarWeekRule _calendarWeekRule = CalendarWeekRule.FirstFourDayWeek;
 
 
         public TrayWeekApplicationContext()
@@ -55,6 +57,7 @@ namespace TrayWeek.GUI
             if (settingsDialog.ShowDialog() == DialogResult.OK)
             {
                 _weeksStartsWith = DateHelper.GetWeekStartDayEnum(settingsDialog.WeekDay);
+                _calendarWeekRule = DateHelper.GetCalendarWeekRule(settingsDialog.FirstWeekOfYear);
 
 
                 UpdateUi();
@@ -80,7 +83,7 @@ namespace TrayWeek.GUI
 
             using (graphics = Graphics.FromImage(image))
             {
-                int weekNo = DateHelper.GetCurrentWeekNumber(DateTime.Now, _weeksStartsWith);
+                int weekNo = DateHelper.GetCurrentWeekNumber(DateTime.Now, _weeksStartsWith, _calendarWeekRule);
 
                 font = new Font("Lucida Console", 18, FontStyle.Regular);
                 SizeF size = graphics.MeasureString(weekNo.ToString(), font);
